@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant client
+  participant server
+
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+  server-->>client: HTML code for page render
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+  server-->>client: main.css file
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+  server-->>client: spa.js file
+
+  note over client: JS file gets executed which sends request for data.json file
+
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+  server-->>client: [{"content":"mars","date":"2022-10-16T10:22:39.764Z"}, ...]
+
+  note over client: JSON data gets processed and displayed on the screen

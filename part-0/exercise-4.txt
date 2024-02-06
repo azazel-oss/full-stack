@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant client
+  participant server
+
+  note over client: Submit button pressed
+
+  client->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+  server-->>client: HTML code for page render
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+  server-->>client: main.css file
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+  server-->>client: main.js file
+
+  note over client: After the form is submitted server sends data.json fetched by event handlers in js file
+
+  client->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+  server-->>client: Array(100){...}

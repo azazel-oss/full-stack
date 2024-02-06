@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant client
+  participant server
+
+  client->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+  server-->>client: {"message":"note created"}
+
+  note over client: The note gets sent to the server first
+
+  note over client: The note data is appended to the local memory of the js file
+
+  note over client: The JS file runs a redrawNotes method which re-renders all the notes present in the js file
